@@ -11,9 +11,9 @@ body {
 
 #canvas-container {
   position: relative;
-  width: calc(90vw - 160px); 
+  width: calc(90vw - 300px);  /* 캔버스 너비 오른쪽 공간 확보 */
   height: 90vh;
-  max-width: calc(1600px - 160px); 
+  max-width: calc(1600px - 300px);
   max-height: 1200px;
   background: #000;
   border-radius: 12px;
@@ -124,11 +124,10 @@ canvas {
 /* 태블릿 대응 */
 @media (max-width: 1024px) {
   #canvas-container {
-    width: calc(95vw - 140px);
+    width: calc(95vw - 250px);
     height: 85vh;
   }
 }
-
   #side-ui {
     left: auto;
     right: 20px;
@@ -138,7 +137,7 @@ canvas {
 
 @media (max-width: 768px) {
   #canvas-container {
-    width: calc(98vw - 120px);
+    width: calc(98vw - 200px);
     height: 75vh;
   }
 }
