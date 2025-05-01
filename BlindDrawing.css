@@ -11,9 +11,9 @@ body {
 
 #canvas-container {
   position: relative;
-  width: 90vw;
+  width: calc(90vw - 160px); 
   height: 90vh;
-  max-width: 1600px;
+  max-width: calc(1600px - 160px); 
   max-height: 1200px;
   background: #000;
   border-radius: 12px;
@@ -124,9 +124,10 @@ canvas {
 /* 태블릿 대응 */
 @media (max-width: 1024px) {
   #canvas-container {
-    width: 95vw;
+    width: calc(95vw - 140px);
     height: 85vh;
   }
+}
 
   #side-ui {
     left: auto;
@@ -137,9 +138,10 @@ canvas {
 
 @media (max-width: 768px) {
   #canvas-container {
-    width: 98vw;
+    width: calc(98vw - 120px);
     height: 75vh;
   }
+}
 
   #side-ui button {
     padding: 10px;
