@@ -3,18 +3,32 @@ body {
   overflow: hidden;
   background: black;
   font-family: 'PlayfairDisplay', serif;
-  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
 }
 
+/* ✅ wrapper: 왼쪽 UI + canvas + 오른쪽 버튼 포함 */
+#wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ✅ 왼쪽 UI: wrapper 내부, 캔버스 왼쪽에 고정 */
+#side-ui {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-right: 20px;
+}
+
+/* ✅ 캔버스 컨테이너 */
 #canvas-container {
   position: relative;
-  width: 1280px; /* ✅ 캡처된 캔버스 폭 */
-  height: 720px;  /* ✅ 캡처된 캔버스 높이 */
+  width: 1280px;
+  height: 720px;
   background: black;
   border-radius: 12px;
   box-shadow: 0 0 30px rgba(255,255,255,0.1);
@@ -28,19 +42,16 @@ canvas {
   display: block;
 }
 
-/* 사이드 UI → 캔버스 왼쪽 바깥 */
-#side-ui {
-  position: absolute;
-  top: 100px;
-  left: -100px;
+/* ✅ 오른쪽 버튼 */
+#buttons {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  z-index: 20;
+  gap: 10px;
+  margin-left: 20px;
 }
 
-/* 사이드 UI 버튼 */
-#side-ui button {
+#side-ui button,
+#buttons button {
   padding: 12px;
   border: none;
   border-radius: 8px;
@@ -51,6 +62,7 @@ canvas {
 }
 
 #side-ui button:hover,
+#buttons button:hover,
 #eraserBtn.active {
   background-color: rgba(180,180,180, 1);
 }
@@ -68,42 +80,7 @@ canvas {
   margin: 10px auto;
 }
 
-/* 완료 버튼 → 캔버스 오른쪽 아래 */
-#finishBtn {
-  position: absolute;
-  bottom: 140px;
-  right: -150px;
-  z-index: 20;
-  padding: 12px 20px;
-  font-size: 16px;
-  background: white;
-  color: black;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-/* 처음으로 버튼 → 완료 아래 */
-#introBtn {
-  position: absolute;
-  bottom: 70px;
-  right: -150px;
-  z-index: 20;
-  padding: 12px 20px;
-  font-size: 16px;
-  background: white;
-  color: black;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-#finishBtn:hover,
-#introBtn:hover {
-  background-color: rgba(180,180,180, 1);
-}
-
-/* 안내 메시지 */
+/* ✅ 안내 메시지 */
 #guideMessage {
   position: fixed;
   left: 50%;
@@ -126,41 +103,24 @@ canvas {
   transition: opacity 1s ease;
 }
 
-/* 🔥 아이패드 대응 → 화면 좁을 경우 scale 축소 */
+/* ✅ 반응형 */
 @media (max-width: 1400px) {
   #canvas-container {
-    transform: scale(0.9);
-    transform-origin: center;
-  }
-  #side-ui {
-    left: -90px;
-    top: 90px;
-  }
-  #finishBtn {
-    right: -135px;
-    bottom: 126px;
-  }
-  #introBtn {
-    right: -135px;
-    bottom: 63px;
+    width: 1100px;
+    height: 620px;
   }
 }
 
 @media (max-width: 1200px) {
   #canvas-container {
-    transform: scale(0.8);
-    transform-origin: center;
+    width: 900px;
+    height: 540px;
   }
-  #side-ui {
-    left: -80px;
-    top: 80px;
-  }
-  #finishBtn {
-    right: -120px;
-    bottom: 112px;
-  }
-  #introBtn {
-    right: -120px;
-    bottom: 56px;
+}
+
+@media (max-width: 900px) {
+  #canvas-container {
+    width: 700px;
+    height: 420px;
   }
 }
