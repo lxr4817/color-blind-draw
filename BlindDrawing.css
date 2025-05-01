@@ -9,24 +9,30 @@ body {
   align-items: center;
 }
 
-/* ✅ wrapper: 왼쪽 UI + canvas + 오른쪽 버튼 포함 */
+/* wrapper: 3열 grid → 좌 UI, 캔버스, 우 버튼 */
 #wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1280px auto;  /* 캔버스 너비 1280px 고정 */
+  grid-gap: 20px;
   align-items: center;
-  justify-content: center;
 }
 
-/* ✅ 왼쪽 UI: wrapper 내부, 캔버스 왼쪽에 고정 */
+/* 사이드 UI */
 #side-ui {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-right: 20px;
 }
 
-/* ✅ 캔버스 컨테이너 */
+/* 버튼 그룹 */
+#buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 캔버스 컨테이너 */
 #canvas-container {
-  position: relative;
   width: 1280px;
   height: 720px;
   background: black;
@@ -42,16 +48,8 @@ canvas {
   display: block;
 }
 
-/* ✅ 오른쪽 버튼 */
-#buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-left: 20px;
-}
-
-#side-ui button,
-#buttons button {
+/* 버튼 스타일 */
+#side-ui button, #buttons button {
   padding: 12px;
   border: none;
   border-radius: 8px;
@@ -61,10 +59,8 @@ canvas {
   transition: all 0.2s ease;
 }
 
-#side-ui button:hover,
-#buttons button:hover,
-#eraserBtn.active {
-  background-color: rgba(180,180,180, 1);
+#side-ui button:hover, #buttons button:hover, #eraserBtn.active {
+  background-color: rgba(180,180,180,1);
 }
 
 #side-ui img {
@@ -80,7 +76,7 @@ canvas {
   margin: 10px auto;
 }
 
-/* ✅ 안내 메시지 */
+/* 안내 메시지 */
 #guideMessage {
   position: fixed;
   left: 50%;
@@ -98,13 +94,11 @@ canvas {
   z-index: 9999;
 }
 
-.fade-out {
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-/* ✅ 반응형 */
+/* 반응형 → 화면 작으면 캔버스 줄이고 grid 자동 정렬 */
 @media (max-width: 1400px) {
+  #wrapper {
+    grid-template-columns: auto 1100px auto;
+  }
   #canvas-container {
     width: 1100px;
     height: 620px;
@@ -112,6 +106,9 @@ canvas {
 }
 
 @media (max-width: 1200px) {
+  #wrapper {
+    grid-template-columns: auto 900px auto;
+  }
   #canvas-container {
     width: 900px;
     height: 540px;
@@ -119,6 +116,9 @@ canvas {
 }
 
 @media (max-width: 900px) {
+  #wrapper {
+    grid-template-columns: auto 700px auto;
+  }
   #canvas-container {
     width: 700px;
     height: 420px;
