@@ -7,6 +7,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 #canvas-container {
@@ -28,19 +29,17 @@ canvas {
   display: block;
 }
 
-/* ✅ 사이드 UI → 캔버스 왼쪽 바깥 */
+/* ✅ 사이드 UI → 캔버스 위, 안쪽에 overlay */
 #side-ui {
   position: absolute;
-  top: 50%;
-  left: -80px; /* 캔버스 왼쪽 바깥에 80px 띄움 */
-  transform: translateY(-50%);
+  top: 40px;
+  left: 40px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  z-index: 20;
+  z-index: 9999;
 }
 
-/* ✅ 사이드 UI 버튼 */
 #side-ui button {
   padding: 12px;
   border: none;
@@ -69,12 +68,12 @@ canvas {
   margin: 10px auto;
 }
 
-/* ✅ 완료 버튼 → 캔버스 오른쪽 바깥 */
+/* ✅ 완료 버튼 → 캔버스 오른쪽 하단 안쪽 */
 #finishBtn {
   position: absolute;
-  bottom: 140px;
-  right: -160px; /* 캔버스 오른쪽 바깥에 160px 띄움 */
-  z-index: 20;
+  bottom: 100px;
+  right: 40px;
+  z-index: 9999;
   padding: 12px 20px;
   font-size: 16px;
   background: white;
@@ -84,12 +83,11 @@ canvas {
   cursor: pointer;
 }
 
-/* ✅ 처음으로 버튼 → 완료 버튼 아래 */
 #introBtn {
   position: absolute;
-  bottom: 70px;
-  right: -160px;
-  z-index: 20;
+  bottom: 40px;
+  right: 40px;
+  z-index: 9999;
   padding: 12px 20px;
   font-size: 16px;
   background: white;
@@ -126,46 +124,37 @@ canvas {
   transition: opacity 1s ease;
 }
 
-/* ✅ 모바일/태블릿 대응 */
+/* ✅ 태블릿, 모바일 대응 */
 @media (max-width: 1024px) {
   #canvas-container {
     width: 85vw;
     height: 75vh;
-    max-width: 1000px;
-    max-height: 750px;
   }
   #side-ui {
-    left: -70px;
+    top: 20px;
+    left: 20px;
+    gap: 10px;
   }
   #finishBtn, #introBtn {
-    right: -140px;
+    right: 20px;
+    padding: 10px 16px;
+    font-size: 14px;
   }
+  #finishBtn { bottom: 80px; }
+  #introBtn { bottom: 20px; }
 }
 
 @media (max-width: 768px) {
   #canvas-container {
     width: 95vw;
     height: 70vh;
-    max-width: 800px;
-    max-height: 600px;
-  }
-  #side-ui {
-    left: -60px;
-  }
-  #finishBtn, #introBtn {
-    right: -120px;
   }
   #side-ui button {
-    padding: 10px;
+    padding: 8px;
     font-size: 14px;
   }
   #finishBtn, #introBtn {
-    padding: 10px 16px;
-    font-size: 14px;
-  }
-  #finishBtn { bottom: 100px; }
-  #introBtn { bottom: 40px; }
-  #guideMessage {
-    font-size: medium;
+    padding: 8px 12px;
+    font-size: 13px;
   }
 }
