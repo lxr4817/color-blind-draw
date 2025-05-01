@@ -15,7 +15,7 @@ body {
   height: 90vh;
   max-width: 1600px;
   max-height: 1200px;
-  background: #000;
+  background: black;
   border-radius: 12px;
   box-shadow: 0 0 30px rgba(255,255,255,0.1);
 }
@@ -23,19 +23,19 @@ body {
 canvas {
   width: 100%;
   height: 100%;
-  display: block;
   border-radius: 12px;
   background: white;
+  display: block;
 }
 
 #side-ui {
   position: absolute;
-  top: 20px;
-  left: calc(100% + 20px);
+  top: 40px;
+  left: 30px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  z-index: 9999;
+  z-index: 20;
 }
 
 #side-ui button {
@@ -69,8 +69,8 @@ canvas {
 #finishBtn {
   position: absolute;
   bottom: 140px;
-  right: 20px;
-  z-index: 9999;
+  right: 70px;
+  z-index: 20;
   padding: 12px 20px;
   font-size: 16px;
   background: white;
@@ -83,8 +83,8 @@ canvas {
 #introBtn {
   position: absolute;
   bottom: 70px;
-  right: 20px;
-  z-index: 9999;
+  right: 70px;
+  z-index: 20;
   padding: 12px 20px;
   font-size: 16px;
   background: white;
@@ -121,33 +121,41 @@ canvas {
   transition: opacity 1s ease;
 }
 
-/* 태블릿 대응 */
+/* ✅ 아이패드 대응 */
 @media (max-width: 1024px) {
   #canvas-container {
-    width: 95vw;
-    height: 85vh;
-  }
-
-  #side-ui {
-    left: auto;
-    right: 20px;
-    top: 20px;
+    width: 85vw;
+    height: 75vh;
+    max-width: 1200px;
+    max-height: 900px;
   }
 }
 
 @media (max-width: 768px) {
   #canvas-container {
-    width: 98vw;
-    height: 75vh;
+    width: 90vw;
+    height: 65vh;
+    max-width: 900px;
+    max-height: 600px;
   }
-
+  #side-ui {
+    top: 20px;
+    left: 20px;
+    gap: 10px;
+  }
   #side-ui button {
     padding: 10px;
     font-size: 14px;
   }
-
-  #finishBtn, #introBtn {
+  #finishBtn,
+  #introBtn {
+    right: 20px;
     padding: 10px 16px;
     font-size: 14px;
+  }
+  #finishBtn { bottom: 100px; }
+  #introBtn { bottom: 40px; }
+  #guideMessage {
+    font-size: medium;
   }
 }
