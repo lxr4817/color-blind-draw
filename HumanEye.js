@@ -23,7 +23,7 @@ const uniforms = {
 
 // 텍스처 로더로 눈동자 이미지 불러오기
 const loader = new THREE.TextureLoader();
-loader.load('iris.png', texture => {
+loader.load('Iris.png', texture => {
   // 텍스처 래핑 및 필터링 설정
   texture.wrapS = texture.wrapT = THREE.ClampToEdgeWrapping;
   texture.minFilter = THREE.LinearFilter;
