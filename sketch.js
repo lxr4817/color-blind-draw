@@ -177,22 +177,25 @@ function bindUIEvents() {
   const finishBtn = document.getElementById("finishBtn");
   const guideMessage = document.getElementById("guideMessage");
   const introBtn = document.getElementById("introBtn");
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  if (isTouchDevice) {
+    eraserBtn?.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      eraserMode = !eraserMode;
+      eraserBtn.classList.toggle("active", eraserMode);
+    });
+  } else {
+    eraserBtn?.addEventListener("click", () => {
+      eraserMode = !eraserMode;
+      eraserBtn.classList.toggle("active", eraserMode);
+    });
+  }
 
   resetBtn?.addEventListener("touchstart", (e) => {
     realCanvas.background(255); // 캔버스 리셋
     e.preventDefault();
     resetBtn.click();
-  });
-
-  eraserBtn?.addEventListener("click", () => {
-    eraserMode = !eraserMode;
-    eraserBtn.classList.toggle("active", eraserMode);
-  });
-  
-  eraserBtn?.addEventListener("touchstart", (e) => {
-    e.preventDefault();
-    eraserMode = !eraserMode;
-    eraserBtn.classList.toggle("active", eraserMode);
   });
 
   increaseBtn?.addEventListener("touchstart", (e) => {
