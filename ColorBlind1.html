@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Grayscale Eye Intro</title>
+  <link rel="stylesheet" href="HumanEyeCSS.css" />
+</head>
+<body>
+
+  <!-- HTML: info 아이콘 -->
+<div id="infoIcon">ⓘ</div>
+
+<!-- 설명 모달 -->
+<div id="infoModal">
+  <div class="infoContent">
+    <p><strong>Project Info</strong></p>
+    <p>우리는 일상에서 색을 자연스럽게 받아들입니다.<br>하지만 모두가 동일한 방식으로 색을 보지는 않습니다.<br><br>이 프로젝트는 감각의 다양성을 탐구하는 인터랙티브 아트 프로젝트입니다.
+    <br>먼저, ‘색’을 절대적인 기준으로 받아들이는 기존의 시각 인식에 파동을 일으켜보세요.</p>
+    <button onclick="closeInfo()">닫기</button>
+  </div>
+</div>
+
+  <div id="overlayText">Touch the eye.<br>What do you see?</div>
+  <div id="threeContainer"></div>
+
+    <div id="nextContainer" style="display: none;">
+      <div id="transitionPopup">명암으로 그림을 그려보세요.</div>
+    </div>
+  </div>
+
+  <!-- Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
+  <!-- Custom Script -->
+  <script src="HumanEye.js"></script>
+</body>
+</html>

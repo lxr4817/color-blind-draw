@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Color Blind Drawing</title>
+  <link rel="stylesheet" href="BlindDrawing.css" />
+</head>
+<body>
+  <div id="canvas-container"></div>
+  <div id="side-ui">
+    <button id="resetBtn">⟲</button>
+    <button id="eraserBtn"><img src="eraserIcon.svg" /></button>
+    <button id="increaseBtn">＋</button>
+    <button id="decreaseBtn">－</button>
+    <button id="filterToggleBtn">Filter ON</button>
+    <div>Brush Size</div>
+    <div id="brushDisplay"></div>
+  </div>
+
+  <button id="finishBtn">드로잉 완료</button>
+  <button id="introBtn">처음으로 이동</button>
+  <div id="guideMessage">드로잉이 완성되자, 필터 아래의 색상이 드러났습니다.<br>
+    색이 보이지 않던 순간의 기억과 지금의 색을 함께 바라보며,<br>
+    당신의 선택, 감각, 그리고 느낀 점에 잠시 귀 기울여 보세요.
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+  <script src="sketch.js"></script>
+</body>
+</html>

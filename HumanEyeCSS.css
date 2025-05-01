@@ -1,0 +1,104 @@
+@font-face {
+  font-family: 'PlayfairDisplay';
+  src: url('PlayfairDisplay-VariableFont_wght.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+  font-family: 'PlayfairDisplay', serif;
+  cursor:pointer;
+}
+
+canvas {
+  display: block;
+}
+
+#overlayText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 22px;
+  pointer-events: none;
+  z-index: 10;
+  letter-spacing: 1px;
+  text-align: center;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+#nextContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 80px;
+}
+
+#transitionPopup {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-family: 'PlayfairDisplay', serif;
+  font-size: 22px;
+  text-align: center;
+  padding: 20px 40px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  animation: blink 2s infinite;
+}
+
+body.fade-out {
+  transition: opacity 1s ease;
+  opacity: 0;
+}
+
+/* 우측 상단 아이콘 */
+#infoIcon {
+  position: absolute;
+  top: 50px;
+  right: 70px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  z-index: 30;
+}
+
+/* 설명 모달 */
+#infoModal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 40;
+}
+
+.infoContent {
+  background: white;
+  color: black;
+  padding: 30px 40px;
+  border-radius: 12px;
+  text-align: center;
+  font-family: 'PlayfairDisplay', serif;
+  max-width: 90%;
+}
