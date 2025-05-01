@@ -3,41 +3,39 @@ body {
   overflow: hidden;
   background: black;
   font-family: 'PlayfairDisplay', serif;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 #canvas-container {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 90vw;
   height: 90vh;
+  max-width: 1600px;
+  max-height: 1200px;
+  background: #000;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.1);
 }
 
 canvas {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 0 30px rgba(255,255,255,0.1);
   width: 100%;
   height: 100%;
-}
-
-div {
-  color: white;
+  display: block;
+  border-radius: 12px;
+  background: white;
 }
 
 #side-ui {
   position: absolute;
-  top: 60px;
-  left: 20px;
+  top: 20px;
+  left: calc(100% + 20px);
   display: flex;
   flex-direction: column;
   gap: 12px;
-  z-index: 20;
+  z-index: 9999;
 }
 
 #side-ui button {
@@ -48,7 +46,6 @@ div {
   cursor: pointer;
   font-size: 16px;
   transition: all 0.2s ease;
-  font-family: 'PlayfairDisplay', serif;
 }
 
 #side-ui button:hover,
@@ -72,8 +69,8 @@ div {
 #finishBtn {
   position: absolute;
   bottom: 140px;
-  right: 70px;
-  z-index: 20;
+  right: 20px;
+  z-index: 9999;
   padding: 12px 20px;
   font-size: 16px;
   background: white;
@@ -81,17 +78,13 @@ div {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-}
-
-#finishBtn:hover{
-  background-color: rgba(180,180,180, 1);
 }
 
 #introBtn {
   position: absolute;
   bottom: 70px;
-  right: 70px;
-  z-index: 20;
+  right: 20px;
+  z-index: 9999;
   padding: 12px 20px;
   font-size: 16px;
   background: white;
@@ -101,29 +94,60 @@ div {
   cursor: pointer;
 }
 
-#introBtn:hover{
+#finishBtn:hover,
+#introBtn:hover {
   background-color: rgba(180,180,180, 1);
 }
 
 #guideMessage {
-  top: auto;
-  width: 800px;
-  z-index: 200;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+  width: 90%;
+  max-width: 800px;
   background: black;
   color: white;
-  position: fixed; 
-  left: 50%;
-  transform: translateX(-50%); 
-  bottom: 20px;
   padding: 15px;
-  margin-bottom: 100px;
   text-align: center;
   border-radius: 8px;
-  font-size:large;
-  display: none; 
+  font-size: large;
+  display: none;
+  z-index: 9999;
 }
 
 .fade-out {
   opacity: 0;
   transition: opacity 1s ease;
+}
+
+/* 태블릿 대응 */
+@media (max-width: 1024px) {
+  #canvas-container {
+    width: 95vw;
+    height: 85vh;
+  }
+
+  #side-ui {
+    left: auto;
+    right: 20px;
+    top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  #canvas-container {
+    width: 98vw;
+    height: 75vh;
+  }
+
+  #side-ui button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  #finishBtn, #introBtn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
 }
