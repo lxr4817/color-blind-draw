@@ -3,6 +3,7 @@ body {
   overflow: hidden;
   background: black;
   font-family: 'PlayfairDisplay', serif;
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -12,10 +13,8 @@ body {
 
 #canvas-container {
   position: relative;
-  width: 90vw;
-  height: 90vh;
-  max-width: 1200px;
-  max-height: 900px;
+  width: 1280px; /* ✅ 캡처된 캔버스 폭 */
+  height: 720px;  /* ✅ 캡처된 캔버스 높이 */
   background: black;
   border-radius: 12px;
   box-shadow: 0 0 30px rgba(255,255,255,0.1);
@@ -29,17 +28,18 @@ canvas {
   display: block;
 }
 
-/* ✅ 사이드 UI → 캔버스 위, 안쪽에 overlay */
+/* 사이드 UI → 캔버스 왼쪽 바깥 */
 #side-ui {
   position: absolute;
-  top: 40px;
-  left: 40px;
+  top: 100px;
+  left: -100px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  z-index: 9999;
+  z-index: 20;
 }
 
+/* 사이드 UI 버튼 */
 #side-ui button {
   padding: 12px;
   border: none;
@@ -68,12 +68,12 @@ canvas {
   margin: 10px auto;
 }
 
-/* ✅ 완료 버튼 → 캔버스 오른쪽 하단 안쪽 */
+/* 완료 버튼 → 캔버스 오른쪽 아래 */
 #finishBtn {
   position: absolute;
-  bottom: 100px;
-  right: 40px;
-  z-index: 9999;
+  bottom: 140px;
+  right: -150px;
+  z-index: 20;
   padding: 12px 20px;
   font-size: 16px;
   background: white;
@@ -83,11 +83,12 @@ canvas {
   cursor: pointer;
 }
 
+/* 처음으로 버튼 → 완료 아래 */
 #introBtn {
   position: absolute;
-  bottom: 40px;
-  right: 40px;
-  z-index: 9999;
+  bottom: 70px;
+  right: -150px;
+  z-index: 20;
   padding: 12px 20px;
   font-size: 16px;
   background: white;
@@ -102,6 +103,7 @@ canvas {
   background-color: rgba(180,180,180, 1);
 }
 
+/* 안내 메시지 */
 #guideMessage {
   position: fixed;
   left: 50%;
@@ -124,37 +126,41 @@ canvas {
   transition: opacity 1s ease;
 }
 
-/* ✅ 태블릿, 모바일 대응 */
-@media (max-width: 1024px) {
+/* 🔥 아이패드 대응 → 화면 좁을 경우 scale 축소 */
+@media (max-width: 1400px) {
   #canvas-container {
-    width: 85vw;
-    height: 75vh;
+    transform: scale(0.9);
+    transform-origin: center;
   }
   #side-ui {
-    top: 20px;
-    left: 20px;
-    gap: 10px;
+    left: -90px;
+    top: 90px;
   }
-  #finishBtn, #introBtn {
-    right: 20px;
-    padding: 10px 16px;
-    font-size: 14px;
+  #finishBtn {
+    right: -135px;
+    bottom: 126px;
   }
-  #finishBtn { bottom: 80px; }
-  #introBtn { bottom: 20px; }
+  #introBtn {
+    right: -135px;
+    bottom: 63px;
+  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   #canvas-container {
-    width: 95vw;
-    height: 70vh;
+    transform: scale(0.8);
+    transform-origin: center;
   }
-  #side-ui button {
-    padding: 8px;
-    font-size: 14px;
+  #side-ui {
+    left: -80px;
+    top: 80px;
   }
-  #finishBtn, #introBtn {
-    padding: 8px 12px;
-    font-size: 13px;
+  #finishBtn {
+    right: -120px;
+    bottom: 112px;
+  }
+  #introBtn {
+    right: -120px;
+    bottom: 56px;
   }
 }
