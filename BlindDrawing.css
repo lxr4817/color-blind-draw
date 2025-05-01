@@ -13,8 +13,8 @@ body {
   position: relative;
   width: 90vw;
   height: 90vh;
-  max-width: 1600px;
-  max-height: 1200px;
+  max-width: 1200px;
+  max-height: 900px;
   background: black;
   border-radius: 12px;
   box-shadow: 0 0 30px rgba(255,255,255,0.1);
@@ -28,16 +28,19 @@ canvas {
   display: block;
 }
 
+/* ✅ 사이드 UI → 캔버스 왼쪽 바깥 */
 #side-ui {
   position: absolute;
-  top: 40px;
-  left: 30px;
+  top: 50%;
+  left: -80px; /* 캔버스 왼쪽 바깥에 80px 띄움 */
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   gap: 12px;
   z-index: 20;
 }
 
+/* ✅ 사이드 UI 버튼 */
 #side-ui button {
   padding: 12px;
   border: none;
@@ -66,10 +69,11 @@ canvas {
   margin: 10px auto;
 }
 
+/* ✅ 완료 버튼 → 캔버스 오른쪽 바깥 */
 #finishBtn {
   position: absolute;
   bottom: 140px;
-  right: 70px;
+  right: -160px; /* 캔버스 오른쪽 바깥에 160px 띄움 */
   z-index: 20;
   padding: 12px 20px;
   font-size: 16px;
@@ -80,10 +84,11 @@ canvas {
   cursor: pointer;
 }
 
+/* ✅ 처음으로 버튼 → 완료 버튼 아래 */
 #introBtn {
   position: absolute;
   bottom: 70px;
-  right: 70px;
+  right: -160px;
   z-index: 20;
   padding: 12px 20px;
   font-size: 16px;
@@ -121,35 +126,40 @@ canvas {
   transition: opacity 1s ease;
 }
 
-/* ✅ 아이패드 대응 */
+/* ✅ 모바일/태블릿 대응 */
 @media (max-width: 1024px) {
   #canvas-container {
     width: 85vw;
     height: 75vh;
-    max-width: 1200px;
-    max-height: 900px;
+    max-width: 1000px;
+    max-height: 750px;
+  }
+  #side-ui {
+    left: -70px;
+  }
+  #finishBtn, #introBtn {
+    right: -140px;
   }
 }
 
 @media (max-width: 768px) {
   #canvas-container {
-    width: 90vw;
-    height: 65vh;
-    max-width: 900px;
+    width: 95vw;
+    height: 70vh;
+    max-width: 800px;
     max-height: 600px;
   }
   #side-ui {
-    top: 20px;
-    left: 20px;
-    gap: 10px;
+    left: -60px;
+  }
+  #finishBtn, #introBtn {
+    right: -120px;
   }
   #side-ui button {
     padding: 10px;
     font-size: 14px;
   }
-  #finishBtn,
-  #introBtn {
-    right: 20px;
+  #finishBtn, #introBtn {
     padding: 10px 16px;
     font-size: 14px;
   }
