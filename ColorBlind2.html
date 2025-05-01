@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="BlindDrawing.css" />
 </head>
 <body>
-<div id="wrapper">
+  <div id="canvas-container"></div>
   <div id="side-ui">
     <button id="resetBtn">⟲</button>
     <button id="eraserBtn"><img src="eraserIcon.svg" /></button>
@@ -17,16 +17,8 @@
     <div id="brushDisplay"></div>
   </div>
 
-  <div id="canvas-container">
-    <!-- canvas는 p5.js에서 생성됨 -->
-  </div>
-
-  <div id="buttons">
-    <button id="finishBtn">드로잉 완료</button>
-    <button id="introBtn">처음으로 이동</button>
-  </div>
-</div>
-</div>
+  <button id="finishBtn">드로잉 완료</button>
+  <button id="introBtn">처음으로 이동</button>
   <div id="guideMessage">드로잉이 완성되자, 필터 아래의 색상이 드러났습니다.<br>
     색이 보이지 않던 순간의 기억과 지금의 색을 함께 바라보며,<br>
     당신의 선택, 감각, 그리고 느낀 점에 잠시 귀 기울여 보세요.

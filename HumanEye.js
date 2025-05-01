@@ -30,8 +30,8 @@ loader.load('Iris.png', texture => {
   uniforms.uTexture.value = texture; // 셰이더에 텍스처 전달
 
   // 동공 메시 크기 계산 (화면 비율 보정)
-  const planeWidth = 0.55 * 2 * aspect;
-  const planeHeight = 0.65 * 2;
+  const planeWidth = 0.9 * 2 * aspect;
+  const planeHeight = 0.75 * 2;
 
   // 평면 지오메트리 생성
   const geometry = new THREE.PlaneGeometry(planeWidth, planeHeight);

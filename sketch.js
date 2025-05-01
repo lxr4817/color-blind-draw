@@ -178,43 +178,53 @@ function bindUIEvents() {
   const guideMessage = document.getElementById("guideMessage");
   const introBtn = document.getElementById("introBtn");
 
-  resetBtn?.addEventListener("click", () => {
+  resetBtn?.addEventListener("touchstart", (e) => {
     realCanvas.background(255); // 캔버스 리셋
+    e.preventDefault();
+    resetBtn.click();
   });
 
-  eraserBtn?.addEventListener("click", () => {
+  eraserBtn?.addEventListener("touchstart", (e) => {
     eraserMode = !eraserMode; // 지우개 모드 토글
-    eraserBtn.classList.toggle("active", eraserMode);
+    e.preventDefault();
+    eraserBtn.click();
   });
 
-  increaseBtn?.addEventListener("click", () => {
+  increaseBtn?.addEventListener("touchstart", (e) => {
     brushSize = Math.min(brushSize + 2, 100); // 브러시 크기 증가
-    updateBrushDisplay();
+    e.preventDefault();
+    increaseBtn.click();
   });
 
-  decreaseBtn?.addEventListener("click", () => {
+  decreaseBtn?.addEventListener("touchstart", (e) => {
     brushSize = Math.max(brushSize - 2, 2); // 브러시 크기 감소
-    updateBrushDisplay();
+    e.preventDefault();
+    decreaseBtn.click();
   });
 
-  filterToggleBtn?.addEventListener("click", () => {
+  filterToggleBtn?.addEventListener("touchstart", (e) => {
     showRealColor = !showRealColor; // 필터 모드 토글
-    filterToggleBtn.innerText = showRealColor ? "Filter OFF" : "Filter ON";
+    e.preventDefault();
+    filterToggleBtn.click();
   });
 
-  finishBtn?.addEventListener("click", () => {
+  finishBtn?.addEventListener("touchstart", (e) => {
     showRealColor = true; // 실제 색상 강제 표시
     filterToggleBtn.innerText = "Filter OFF";
     guideMessage.style.display = "block"; // 안내 메시지 표시
     setTimeout(() => {
       guideMessage.style.display = "none";
     }, 8000);
+    e.preventDefault();
+    finishBtn.click();
   });
-
-  introBtn?.addEventListener("click", () => {
+  
+  introBtn?.addEventListener("touchstart", (e) => {
     document.body.classList.add("fade-out"); // 페이드 아웃 클래스 추가
     setTimeout(() => {
       window.location.href = "ColorBlind1.html"; // 1초 후 페이지 이동
     }, 1000);
+    e.preventDefault();
+    introBtn.click();
   });
 }

@@ -5,38 +5,30 @@
   font-style: normal;
 }
 
-html, body {
+body {
   margin: 0;
-  padding: 0;
   overflow: hidden;
-  width: 100%;
-  height: 100%;
   background: black;
   font-family: 'PlayfairDisplay', serif;
-  cursor: pointer;
-  position: relative;
+  cursor:pointer;
 }
 
 canvas {
   display: block;
-  width: 100%;
-  height: 100%;
 }
 
 #overlayText {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 50.5%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 22px;
+  font-size: 20px;
   pointer-events: none;
   z-index: 10;
   letter-spacing: 1px;
   text-align: center;
   animation: blink 2s infinite;
-  max-width: 90%;
-  word-break: keep-all;
 }
 
 @keyframes blink {
@@ -46,18 +38,22 @@ canvas {
 
 #nextContainer {
   position: absolute;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
   z-index: 20;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 80px;
 }
 
 #transitionPopup {
   background: rgba(255, 255, 255, 0.05);
   color: white;
+  font-family: 'PlayfairDisplay', serif;
   font-size: 22px;
   text-align: center;
   padding: 20px 40px;
@@ -66,8 +62,6 @@ canvas {
   backdrop-filter: blur(8px);
   cursor: pointer;
   animation: blink 2s infinite;
-  max-width: 90%;
-  box-sizing: border-box;
 }
 
 body.fade-out {
@@ -75,16 +69,18 @@ body.fade-out {
   opacity: 0;
 }
 
+/* 우측 상단 아이콘 */
 #infoIcon {
   position: absolute;
-  top: 30px;
-  right: 40px;
-  font-size: 36px;
+  top: 50px;
+  right: 70px;
+  font-size: 40px;
   color: white;
   cursor: pointer;
   z-index: 30;
 }
 
+/* 설명 모달 */
 #infoModal {
   position: fixed;
   top: 0; left: 0;
@@ -105,35 +101,4 @@ body.fade-out {
   text-align: center;
   font-family: 'PlayfairDisplay', serif;
   max-width: 90%;
-  box-sizing: border-box;
-}
-
-@media (max-width: 1024px) {
-  #overlayText {
-    font-size: 20px;
-  }
-  #transitionPopup {
-    font-size: 20px;
-    padding: 18px 32px;
-  }
-  #infoIcon {
-    top: 20px;
-    right: 30px;
-    font-size: 32px;
-  }
-}
-
-@media (max-width: 768px) {
-  #overlayText {
-    font-size: 18px;
-  }
-  #transitionPopup {
-    font-size: 18px;
-    padding: 16px 24px;
-  }
-  #infoIcon {
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
-  }
 }
