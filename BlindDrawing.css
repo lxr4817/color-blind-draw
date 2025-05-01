@@ -97,30 +97,30 @@ canvas {
 /* 반응형 → 화면 작으면 캔버스 줄이고 grid 자동 정렬 */
 @media (max-width: 1400px) {
   #wrapper {
-    grid-template-columns: auto 1100px auto;
+    grid-template-columns: auto 1000px auto;
   }
   #canvas-container {
-    width: 1000px;
-    height: 520px;
+    width: 900px;
+    height: 420px;
   }
 }
 
 @media (max-width: 1200px) {
   #wrapper {
-    grid-template-columns: auto 900px auto;
+    grid-template-columns: auto 800px auto;
   }
   #canvas-container {
-    width: 800px;
-    height: 440px;
+    width: 700px;
+    height: 340px;
   }
 }
 
 @media (max-width: 900px) {
   #wrapper {
-    grid-template-columns: auto 700px auto;
+    grid-template-columns: auto 600px auto;
   }
   #canvas-container {
     width: 600px;
-    height: 320px;
+    height: 220px;
   }
 }
