@@ -184,20 +184,27 @@ function bindUIEvents() {
     resetBtn.click();
   });
 
+  eraserBtn?.addEventListener("click", () => {
+    eraserMode = !eraserMode;
+    eraserBtn.classList.toggle("active", eraserMode);
+  });
+  
   eraserBtn?.addEventListener("touchstart", (e) => {
-    eraserMode = !eraserMode; // 지우개 모드 토글
     e.preventDefault();
-    eraserBtn.click();
+    eraserMode = !eraserMode;
+    eraserBtn.classList.toggle("active", eraserMode);
   });
 
   increaseBtn?.addEventListener("touchstart", (e) => {
     brushSize = Math.min(brushSize + 2, 100); // 브러시 크기 증가
+    updateBrushDisplay();
     e.preventDefault();
     increaseBtn.click();
   });
 
   decreaseBtn?.addEventListener("touchstart", (e) => {
     brushSize = Math.max(brushSize - 2, 2); // 브러시 크기 감소
+    updateBrushDisplay();
     e.preventDefault();
     decreaseBtn.click();
   });
