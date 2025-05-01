@@ -9,33 +9,13 @@ body {
   align-items: center;
 }
 
-/* wrapper: 3열 grid → 좌 UI, 캔버스, 우 버튼 */
-#wrapper {
-  display: grid;
-  grid-template-columns: auto 1280px auto;  /* 캔버스 너비 1280px 고정 */
-  grid-gap: 20px;
-  align-items: center;
-}
-
-/* 사이드 UI */
-#side-ui {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* 버튼 그룹 */
-#buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* 캔버스 컨테이너 */
 #canvas-container {
-  width: 1280px;
-  height: 720px;
-  background: black;
+  position: relative;
+  width: 90vw;
+  height: 90vh;
+  max-width: 1600px;
+  max-height: 1200px;
+  background: #000;
   border-radius: 12px;
   box-shadow: 0 0 30px rgba(255,255,255,0.1);
 }
@@ -43,13 +23,22 @@ body {
 canvas {
   width: 100%;
   height: 100%;
+  display: block;
   border-radius: 12px;
   background: white;
-  display: block;
 }
 
-/* 버튼 스타일 */
-#side-ui button, #buttons button {
+#side-ui {
+  position: absolute;
+  top: 20px;
+  left: calc(100% + 20px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+}
+
+#side-ui button {
   padding: 12px;
   border: none;
   border-radius: 8px;
@@ -59,8 +48,9 @@ canvas {
   transition: all 0.2s ease;
 }
 
-#side-ui button:hover, #buttons button:hover, #eraserBtn.active {
-  background-color: rgba(180,180,180,1);
+#side-ui button:hover,
+#eraserBtn.active {
+  background-color: rgba(180,180,180, 1);
 }
 
 #side-ui img {
@@ -76,7 +66,39 @@ canvas {
   margin: 10px auto;
 }
 
-/* 안내 메시지 */
+#finishBtn {
+  position: absolute;
+  bottom: 140px;
+  right: 20px;
+  z-index: 9999;
+  padding: 12px 20px;
+  font-size: 16px;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#introBtn {
+  position: absolute;
+  bottom: 70px;
+  right: 20px;
+  z-index: 9999;
+  padding: 12px 20px;
+  font-size: 16px;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#finishBtn:hover,
+#introBtn:hover {
+  background-color: rgba(180,180,180, 1);
+}
+
 #guideMessage {
   position: fixed;
   left: 50%;
@@ -94,33 +116,38 @@ canvas {
   z-index: 9999;
 }
 
-/* 반응형 → 화면 작으면 캔버스 줄이고 grid 자동 정렬 */
-@media (max-width: 1400px) {
-  #wrapper {
-    grid-template-columns: auto 1000px auto;
-  }
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/* 태블릿 대응 */
+@media (max-width: 1024px) {
   #canvas-container {
-    width: 900px;
-    height: 420px;
+    width: 95vw;
+    height: 85vh;
+  }
+
+  #side-ui {
+    left: auto;
+    right: 20px;
+    top: 20px;
   }
 }
 
-@media (max-width: 1200px) {
-  #wrapper {
-    grid-template-columns: auto 800px auto;
-  }
+@media (max-width: 768px) {
   #canvas-container {
-    width: 700px;
-    height: 340px;
+    width: 98vw;
+    height: 75vh;
   }
-}
 
-@media (max-width: 900px) {
-  #wrapper {
-    grid-template-columns: auto 600px auto;
+  #side-ui button {
+    padding: 10px;
+    font-size: 14px;
   }
-  #canvas-container {
-    width: 600px;
-    height: 220px;
+
+  #finishBtn, #introBtn {
+    padding: 10px 16px;
+    font-size: 14px;
   }
 }
